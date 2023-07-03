@@ -44,5 +44,6 @@ RUN chmod +x /multitor/startup.sh
 WORKDIR /multitor/
 EXPOSE	16379
 
+RUN for file in /etc/privoxy/*.new; do mv "$file" "${file%.new}"; done
 #CMD multitor --init 5 --user root --socks-port 9000 --control-port 9900 --proxy privoxy --haproxy --verbose --debug > /tmp/multitor.log; tail -f /tmp/multitor.log
 CMD ["./startup.sh"]
